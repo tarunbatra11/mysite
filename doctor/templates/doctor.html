@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div id="doctor-page"  class="container-fluid">
+
+  <div class="container requested-appointments">
+    <h5><b><u>Request for Appointments</u></b></h5>
+    {% for request in new_requests %}
+      {{ request.appointment_message }}<br>
+    {% endfor %}
+  </div>
+
+  <div class="container approved-appointments">
+    <h5><b><u>Approved Appointments</u></b></h5>
+    {% for appointment in approved_appointments %}
+      {{ appointment.appointment_message }}<br>
+    {% endfor %}
+  </div>
+
+  <div class="container feedbacks-received">
+    <h5><b><u>Feedbacks Received</u></b></h5>
+  </div>
+
+  <div class="container edit-profile">
+    <a href="#" class="btn btn-default" role="button">Edit profile</a> 
+  </div>
+
+</div>
+
+{% endblock %}

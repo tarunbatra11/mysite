@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div id="patient-page" class="container-fluid">
+
+  <div class="container appointment-history">
+    <h5><b><u>Appointment History</u></b></h5>
+    {% for appointment in appointment_history %}
+      {{ appointment.appointment_message }}<br>
+    {% endfor %}
+  </div>
+
+  <div class="container approved-appointments">
+    <h5><b><u>Approved Appointments</u></b></h5>
+    {% for appointment in approved_appointments %}
+      {{ appointment.appointment_message }}<br>
+    {% endfor %}
+  </div>
+
+  <div class="container approved-appointments">
+    <h5><b><u>Appointments to be approved</u></b></h5>
+    {% for appointment in pending_appointments %}
+      {{ appointment.appointment_message }}<br>
+    {% endfor %}
+  </div>
+
+  <div class="container edit-profile">
+    <a href="#" class="btn btn-default" role="button">Edit profile</a> 
+  </div>
+
+  <div class="container new-appointment">
+    <h3><b>New Appointment</b></h3>
+    <form method="POST" class="appointment-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Send Request</button>
+    </form>
+  </div>
+
+</div>
+
+{% endblock %}

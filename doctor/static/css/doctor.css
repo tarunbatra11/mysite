@@ -1,0 +1,68 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#base-page, #login-page, #index-page {
+    padding: 0;
+}
+
+#base-page .logged-in-user {
+    width: 300px;
+    float: left;
+    font-size: 20px;
+    color: #5B5B5B;
+}
+
+#base-page .log-out {
+    float: right;
+} 
+#login-page .top-half {
+    background: #F2F2F2;
+    padding: 50px 0;
+}
+
+#login-page .bottom-half {
+    padding: 50px 0;
+}
+
+#login-page .index-description {
+    padding: 30px 0;
+}
+
+.formLogin .formRow {
+    margin-bottom: 15px;
+}
+
+#index-page .top-half {
+    margin-top: 10%;;
+}
+
+#index-page .user {
+    margin-bottom: 30px;
+}
+
+#patient-page .appointment-history,
+#patient-page .approved-appointments,
+#patient-page .approved-appointments,
+#doctor-page .requested-appointments, 
+#doctor-page .approved-appointments, 
+#doctor-page .feedbacks-received {
+    border: 1px solid #eee;
+    margin-bottom: 15px;
+    font-size: 13px;
+}
+
+#patient-page .new-appointment {
+    margin-top: 40px;
+    border-top: 1px solid #eee;
+}
+
+#patient-page .appointment-form label {
+    font-weight: 300;
+    width: 200px;    
+}
+
+.edit-profile {
+    padding: 0;
+}

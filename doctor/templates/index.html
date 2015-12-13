@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div id="index-page" class="container-fluid">
+  <div class="container top-half">
+    <div class="user"><h4><b>Hello {{ user.username }}</b></h4></div>
+    <div class="links-to-profile">
+      <p>Please select the button you want to login as</p>
+      <a href="{% url 'doctor_page' %}" class="btn btn-primary" role="button">Doctor</a>
+      <a href="{% url 'patient_page' %}" class="btn btn-primary" role="button">Patient</a>
+    </div>
+  </div>
+</div> 
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="login-page" class="container-fluid">
+  <div class="container-fluid top-half">
+    <div class="container">
+      <h1><b>Welcome to doctor application</b></h1>
+      <div class="index-description">
+        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
+      </div>
+      <button type="button" class="btn btn-success">Success</button>
+    </div>
+  </div>
+
+  <div class="container-fluid bottom-half">
+    <div class="container">
+      <h4><b>Login</b></h4>
+      <div class="index-login-form">
+        <form class="formLogin" method="post" action="">
+          {% csrf_token %}
+    
+          {% if form.errors %}
+            <p class="formError">Your username and password didn't
+              match. Please try again.</p>
+          {% endif %}
+    
+          {% if next %}
+            {% if user.is_authenticated %}
+              <p class="formError">Your account doesn't have access to this
+                page. To proceed, please login with an account that has
+                access.</p>
+            {% endif %}
+          {% endif %}
+    
+          <div class="formRow">
+            <input id="id_username" type="text" name="username"
+                   maxlength="254" placeholder="Username" />
+          </div>
+    
+          <div class="formRow">
+            <input id="id_password" type="password" name="password"
+                   placeholder="Password" />
+          </div>
+    
+          <div class="formRow">
+            <button type="submit" value="login">
+              Login
+            </button>
+            <input type="hidden" name="next" value="{{ next }}" />
+          </div>
+    
+          <div class="formRow">
+            <!--a href=" url 'password_reset' ">Lost password?</a-->
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
