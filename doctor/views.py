@@ -22,8 +22,8 @@ def doctor(request):
     account_object = Account.objects.get(user = user_object)
     doctor_object = Doctor.objects.get(name = account_object)
     fo = str(timezone.now())[:19]
-    new_requests = Appointment.objects.filter(doctor = doctor_object, approved_status = False, appointment_time__gte=fo)
-    approved_appointments = Appointment.objects.filter(doctor=doctor_object, approved_status=True, appointment_time__gte=fo)
+    new_requests = Appointment.objects.filter(doctor=doctor_object, approved_status='pending', appointment_time__gte=fo)
+    approved_appointments = Appointment.objects.filter(doctor=doctor_object, approved_status='approved', appointment_time__gte=fo)
     return render(request, 'doctor.html', {'new_requests' : new_requests, 'approved_appointments': approved_appointments})
 
 
@@ -35,10 +35,9 @@ def patient(request):
     user_object = User.objects.get(username = user)
     account_object = Account.objects.get(user = user_object)
     appointment_history = Appointment.objects.filter(patient=account_object)
-    approved_appointments = Appointment.objects.filter(patient=account_object, approved_status=True)
+    approved_appointments = Appointment.objects.filter(patient=account_object, approved_status='approved')
     fo = str(timezone.now())[:19]
-    pending_appointments = Appointment.objects.filter(patient=account_object, approved_status=False, appointment_time__gte=fo)
-    logger.warn(pending_appointments)
+    pending_appointments = Appointment.objects.filter(patient=account_object, approved_status='pending', appointment_time__gte=fo)
     if request.method == "POST":
        form = AppointmentForm(request.POST)
        if form.is_valid():
@@ -50,16 +49,3 @@ def patient(request):
     else:
         form = AppointmentForm()
     return render(request, 'patient.html', {'form': form, 'appointment_history': appointment_history, 'approved_appointments': approved_appointments,  'pending_appointments': pending_appointments})
-
-
-
-
-
-
-
-
-
-
-
-
-

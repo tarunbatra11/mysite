@@ -34,7 +34,7 @@ class Appointment(models.Model):
     appointment_message = models.CharField(max_length=500)
     appointment_time = models.DateTimeField(
             blank=True, null=True)
-    approved_status = models.BooleanField(default=False)
+    approved_status = models.CharField(max_length=8, default='pending', editable=True)
     request_date = models.DateTimeField(
             blank=True, null=True)
 

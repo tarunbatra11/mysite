@@ -7,7 +7,7 @@
   <div class="container requested-appointments">
     <h5><b><u>Request for Appointments</u></b></h5>
     {% for request in new_requests %}
-      {{ request.appointment_message }}<br>
+      <b><u>{{ request.patient }}</u></b>: {{ request.appointment_message }}. <b><u>Time</u></b>: {{ request.appointment_time }}<br>
     {% endfor %}
   </div>
 
