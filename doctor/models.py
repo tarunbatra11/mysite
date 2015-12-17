@@ -38,5 +38,9 @@ class Appointment(models.Model):
     request_date = models.DateTimeField(
             blank=True, null=True)
 
+    def approve(self):
+        self.approved_status = 'approved'
+        self.save() 
+
     def __str__(self):
         return str(self.doctor)

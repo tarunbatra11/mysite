@@ -7,21 +7,27 @@
   <div class="container appointment-history">
     <h5><b><u>Appointment History</u></b></h5>
     {% for appointment in appointment_history %}
-      {{ appointment.appointment_message }}<br>
+      <div class="appointment">
+        <b><u>{{ appointment.doctor }}</u></b>: {{ appointment.appointment_message }}. <b><u>Time</u></b>: {{ appointment.appointment_time }}
+      </div>
     {% endfor %}
   </div>
 
   <div class="container approved-appointments">
     <h5><b><u>Approved Appointments</u></b></h5>
     {% for appointment in approved_appointments %}
-      {{ appointment.appointment_message }}<br>
+      <div class="appointment">
+        <b><u>{{ appointment.doctor }}</u></b>: {{ appointment.appointment_message }}. <b><u>Time</u></b>: {{ appointment.appointment_time }}
+      </div>
     {% endfor %}
   </div>
 
   <div class="container approved-appointments">
     <h5><b><u>Appointments to be approved</u></b></h5>
     {% for appointment in pending_appointments %}
-      {{ appointment.appointment_message }}<br>
+      <div class="appointment">
+        <b><u>{{ appointment.doctor }}</u></b>: {{ appointment.appointment_message }}. <b><u>Time</u></b>: {{ appointment.appointment_time }}
+      </div>
     {% endfor %}
   </div>
 
@@ -33,6 +39,7 @@
     <h3><b>New Appointment</b></h3>
     <form method="POST" class="appointment-form">{% csrf_token %}
         {{ form.as_p }}
+        <p>Please enter date in this format: "2015-12-26 11:45:12"</p>
         <button type="submit" class="save btn btn-default">Send Request</button>
     </form>
   </div>
