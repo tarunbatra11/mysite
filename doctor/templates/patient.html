@@ -31,6 +31,15 @@
     {% endfor %}
   </div>
 
+  <div class="container feedbacks-given">
+    <h5><b><u>Feedbacks Given</u></b></h5>
+    {% for feedback in feedbacks_given %}
+      <div class="appointment">
+        <b><u>{{ feedback.doctor }}</u></b>: {{ feedback.feedback_given }}. <b><u>Time</u></b>: {{ feedback.feedback_time }}
+      </div>
+    {% endfor %}
+  </div>
+
   <div class="container edit-profile">
     <a href="#" class="btn btn-default" role="button">Edit profile</a> 
   </div>
@@ -39,7 +48,7 @@
     <h3><b>New Appointment</b></h3>
     <form method="POST" class="appointment-form">{% csrf_token %}
         {{ form.as_p }}
-        <p>Please enter date in this format: "2015-12-26 11:45:12"</p>
+        <p class="suggestion">Please enter date in this format: "2015-12-26 11:45:12"</p>
         <button type="submit" class="save btn btn-default">Send Request</button>
     </form>
   </div>

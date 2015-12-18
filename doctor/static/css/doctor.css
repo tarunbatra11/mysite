@@ -45,6 +45,7 @@ body {
 #patient-page .appointment-history,
 #patient-page .approved-appointments,
 #patient-page .approved-appointments,
+#patient-page .feedbacks-given, 
 #doctor-page .requested-appointments, 
 #doctor-page .approved-appointments, 
 #doctor-page .feedbacks-received {
@@ -65,4 +66,14 @@ body {
 
 .edit-profile {
     padding: 0;
+}
+
+.appointment,
+.feedback {
+    color: #858585;
+}
+
+.suggestion {
+    color: #858585;
+    font-size: 11px;
 }

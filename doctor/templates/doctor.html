@@ -28,6 +28,11 @@
 
   <div class="container feedbacks-received">
     <h5><b><u>Feedbacks Received</u></b></h5>
+    {% for feedback in feedbacks_received %}
+      <div class="appointment">
+        <b><u>{{ feedback.patient }}</u></b>: {{ feedback.feedback_given }}. <b><u>Time</u></b>: {{ feedback.feedback_time }}
+      </div>
+    {% endfor %}
   </div>
 
   <div class="container edit-profile">

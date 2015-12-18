@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
-from .models import Account, Doctor, Speciality, Appointment
+from .models import Account, Doctor, Speciality, Appointment, Feedback
 
 
 class AccountInline(admin.StackedInline):
@@ -22,6 +22,7 @@ class DoctorAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Appointment)
+admin.site.register(Feedback)
 admin.site.register(Doctor, DoctorAdmin)
 admin.site.register(Speciality, SpecialityAdmin)
 admin.site.unregister(User)
