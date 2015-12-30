@@ -3,6 +3,12 @@ body {
     padding: 0;
 }
 
+input[type="text"],
+input[type="password"] {
+    font-size: 12px;
+    padding: 4px 12px;
+}
+
 #base-page, #login-page, #index-page {
     padding: 0;
 }
