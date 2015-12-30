@@ -67,4 +67,4 @@ class Feedback(models.Model):
         self.save() 
 
     def __str__(self):
-        return str(self.feedback_given)+' - '+str(self.approved_status)
+        return str(self.feedback_given)
