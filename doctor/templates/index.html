@@ -5,11 +5,30 @@
 <div id="index-page" class="container-fluid">
   <div class="container top-half">
     <div class="user"><h4><b>Hello {{ user.username }}</b></h4></div>
-    <div class="links-to-profile">
-      <p>Please select the button you want to login as</p>
-      <a href="{% url 'doctor_page' %}" class="btn btn-primary" role="button">Doctor</a>
-      <a href="{% url 'patient_page' %}" class="btn btn-primary" role="button">Patient</a>
-    </div>
+    {% if not user.is_superuser %}
+      <div class="links-to-profile">
+        <p>Please select the button you want to login as</p>
+        <a href="{% url 'doctor_page' %}" class="btn btn-primary" role="button">Doctor</a>
+        <a href="{% url 'patient_page' %}" class="btn btn-primary" role="button">Patient</a>
+      </div>
+    {% endif %}
+    {% if user.is_superuser %}
+      <a href="{% url 'admin_page' %}" class="btn btn-primary" role="button">Admin panel</a>
+      <div class="feedbacks">
+        <p>Feedbacks for approval or rejection</p>
+        {% for feedback in feedbacks %}
+          {% if feedback.approved_status == 'pending' %}
+            <div class="feedback">
+              <div class="feedback-doctor">{{feedback.doctor}}</div>
+              <div class="feedback-comment">{{feedback.feedback_given}}</div>
+              <div class="feedback-patient">{{feedback.patient}}</div>
+              <a class="btn btn-default" href="{% url 'feedback_approve' pk=feedback.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
+              <a class="btn btn-default" href="{% url 'feedback_reject' pk=feedback.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
   </div>
 </div> 
 
