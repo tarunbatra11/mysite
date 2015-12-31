@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div id="feedback-page" class="container-fluid">
+
+  <div class="container appointment-description">
+    <h5><b><u>Appointment Description</u></b></h5>
+    <div class="appointment-message">Please fix meeting urgently.</div>
+    <div class="appointment-doctor">Appointment was handeled by doctor vikasrana.</div>
+  </div>
+
+  <div class="container give-feedback">
+    <h5><b>You can provide feedback for this appointment here.</b></h5>
+    <form method="POST" class="appointment-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Submit</button>
+    </form>
+  </div>
+
+</div>
+
+{% endblock %}
