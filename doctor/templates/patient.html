@@ -6,9 +6,15 @@
 
   <div class="container appointment-history">
     <h5><b><u>Appointment History</u></b></h5>
+    <p class="suggestion">(Green appointment indicates the approved appointments, please provide feedback for these appointments)</p>
     {% for appointment in appointment_history %}
+      {% if appointment.approved_status == 'approved' %}
+      <div class="appointment-approved">
+        <a href="{% url 'feedback_page' pk=appointment.pk %}"><b><u>{{ appointment.doctor }}</u></b>: {{ appointment.appointment_message }}. <b><u>Time</u></b>: {{ appointment.appointment_time }}</a>
+      {% else %}
       <div class="appointment">
         <b><u>{{ appointment.doctor }}</u></b>: {{ appointment.appointment_message }}. <b><u>Time</u></b>: {{ appointment.appointment_time }}
+      {% endif %}
       </div>
     {% endfor %}
   </div>

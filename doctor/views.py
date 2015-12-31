@@ -2,9 +2,9 @@ from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 from doctor.models import Doctor, Appointment, Account, Feedback
-from doctor.forms import AppointmentForm
+from doctor.forms import AppointmentForm, FeedbackForm
 import logging
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.utils import timezone
 
 logger = logging.getLogger(__name__)
@@ -81,3 +81,25 @@ def feedback_reject(request, pk):
     feedback = get_object_or_404(Feedback, pk=pk)
     feedback.reject()
     return redirect('doctor.views.index')
+
+
+@login_required
+def feedback_page(request, pk):
+    appointment_object = Appointment.objects.get(pk=pk)
+    doctor_username = appointment_object.doctor
+    user = str(request.user)
+    user_object = User.objects.get(username = user)
+    account_object = Account.objects.get(user = user_object)
+    if request.method == "POST":
+       form = FeedbackForm(request.POST)
+       if form.is_valid():
+           feedback = form.save(commit=False)
+           feedback.doctor = doctor_username
+           feedback.patient = account_object
+           feedback.feedback_time = timezone.now()
+           feedback.save()
+           return HttpResponseRedirect('/')
+    else:
+        form = FeedbackForm()
+
+    return render(request, 'feedback.html', {'form': form})

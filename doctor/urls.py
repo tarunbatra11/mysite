@@ -11,4 +11,6 @@ urlpatterns = [
     url(r'^appointment/(?P<pk>[0-9]+)/reject/$', views.appointment_reject, name='appointment_reject'),
     url(r'^feedback/(?P<pk>[0-9]+)/approve/$', views.feedback_approve, name='feedback_approve'),
     url(r'^feedback/(?P<pk>[0-9]+)/reject/$', views.feedback_reject, name='feedback_reject'),
+    url(r'^feedback/(?P<pk>[0-9]+)/$', views.feedback_page, name='feedback_page'),
+    # url(r'^feedback/(?P<doctor_username>([a-zA-Z0-9_])*)/$', views.feedback_page, name='feedback_page'),
 ]

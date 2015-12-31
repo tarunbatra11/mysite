@@ -15,15 +15,19 @@
     {% if user.is_superuser %}
       <a href="{% url 'admin_page' %}" class="btn btn-primary" role="button">Admin panel</a>
       <div class="feedbacks">
-        <p>Feedbacks for approval or rejection</p>
+        <p><b>Feedbacks for approval or rejection</b></p>
         {% for feedback in feedbacks %}
           {% if feedback.approved_status == 'pending' %}
             <div class="feedback">
-              <div class="feedback-doctor">{{feedback.doctor}}</div>
-              <div class="feedback-comment">{{feedback.feedback_given}}</div>
-              <div class="feedback-patient">{{feedback.patient}}</div>
-              <a class="btn btn-default" href="{% url 'feedback_approve' pk=feedback.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
-              <a class="btn btn-default" href="{% url 'feedback_reject' pk=feedback.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+              <div class="feedback-doctor-patient">
+                <div class="feedback-doctor"><b>Feedback for:</b> {{feedback.doctor}}</div>
+                <div class="feedback-patient"><b>Feedback by:</b> {{feedback.patient}}</div>
+              </div>
+              <div class="feedback-message">
+                <div class="feedback-comment"><b>Feedback given:</b> {{feedback.feedback_given}}</div>
+                <a class="btn btn-default" href="{% url 'feedback_approve' pk=feedback.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
+                <a class="btn btn-default" href="{% url 'feedback_reject' pk=feedback.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+              </div>
             </div>
           {% endif %}
         {% endfor %}

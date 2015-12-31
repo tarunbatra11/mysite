@@ -1,6 +1,7 @@
 body {
     margin: 0;
     padding: 0;
+    font-size: 13px;
 }
 
 input[type="text"],
@@ -74,12 +75,44 @@ input[type="password"] {
     padding: 0;
 }
 
-.appointment,
-.feedback {
+.appointment {
     color: #858585;
+}
+
+.appointment-approved a {
+    color: #1B8432;
+}
+
+.appointment-approved a:hover {
+    text-decoration: none;
 }
 
 .suggestion {
     color: #858585;
     font-size: 11px;
+}
+
+.feedbacks {
+    margin-top: 20px; 
+}
+
+.feedbacks p {
+    font-size: 15px;
+}
+
+.feedback {
+    color: #595959;
+    overflow: auto;
+    background: #F2F2F2;
+    padding: 12px;
+}
+
+.feedback-doctor-patient {
+    float: left;
+    width: 25%;
+}
+
+.feedback-message {
+    float: left;
+    width: 75%;
 }
