@@ -12,9 +12,15 @@ logger = logging.getLogger(__name__)
 @login_required
 def index(request):
     user = request.user
+    user_object = User.objects.get(username = user)
+
     if user.is_superuser:
         feedbacks = Feedback.objects.filter(approved_status='pending')
         return render(request, 'index.html', {'feedbacks': feedbacks})
+    else:
+        account_object = get_object_or_404(Account, user = user_object)
+        if not hasattr(account_object, 'doctor'):
+            return redirect('doctor.views.patient')
 
     return render(request, 'index.html')
 
